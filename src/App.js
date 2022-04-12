@@ -22,8 +22,9 @@ class App extends React.Component {
 
   onInputChange = ({ target }) => {
     const { name } = target;
-    // console.log(name);
+    // console.log(target.checked);
     const value = target.type === 'checkbox' ? target.checked : target.value;
+
     this.setState(({ [name]: value }), () => {
       if (this.validation()) {
         this.setState({ isSaveButtonDisabled: false });
@@ -31,6 +32,18 @@ class App extends React.Component {
         this.setState({ isSaveButtonDisabled: true });
       }
     });
+
+    this.hasTrunfoValidation({ target });
+  }
+
+  hasTrunfoValidation = ({ target }) => {
+    const condition = (target.checked === true
+      ? this.setState({ hasTrunfo: true })
+      : this.setState({ hasTrunfo: false }));
+
+    if (target.type === 'checkbox') {
+      return condition;
+    }
   }
 
   validateIsEmpty = () => {
