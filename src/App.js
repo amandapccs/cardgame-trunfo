@@ -22,10 +22,15 @@ class App extends React.Component {
 
   onInputChange = ({ target }) => {
     const { name } = target;
+    const { deck } = this.state;
     // console.log(target.checked);
     const value = target.type === 'checkbox' ? target.checked : target.value;
+    const deckHasTrunfo = deck.some((cards) => cards.cardTrunfo === true);
 
     this.setState(({ [name]: value }), () => {
+      if (deckHasTrunfo || target.checked) {
+        this.setState({ hasTrunfo: true });
+      }
       if (this.validation()) {
         this.setState({ isSaveButtonDisabled: false });
       } else {
@@ -33,18 +38,18 @@ class App extends React.Component {
       }
     });
 
-    this.hasTrunfoValidation({ target });
+    // this.hasTrunfoValidation({ target });
   }
 
-  hasTrunfoValidation = ({ target }) => {
-    const condition = (target.checked === true
-      ? this.setState({ hasTrunfo: true })
-      : this.setState({ hasTrunfo: false }));
+  // hasTrunfoValidation = ({ target }) => {
+  //   const condition = (target.checked === true
+  //     ? this.setState({ hasTrunfo: true })
+  //     : this.setState({ hasTrunfo: false }));
 
-    if (target.type === 'checkbox') {
-      return condition;
-    }
-  }
+  //   if (target.type === 'checkbox') {
+  //     return condition;
+  //   }
+  // }
 
   validateIsEmpty = () => {
     const { cardName,
@@ -119,9 +124,17 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
+      cardTrunfo: false,
       cardRare: 'normal',
     });
   }
+
+  removeCard = (e) => {
+    const { deck } = this.state;
+    const click = e.target.previousSibling.querySelector('.name').textContent;
+    const filtro = deck.filter((card) => (card.cardName !== click));
+    this.setState({ deck: filtro, hasTrunfo: false });
+  };
 
   render() {
     const { cardName,
@@ -164,17 +177,20 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
 
-        { deck.map((card) => (<Card
-          key={ card.cardName }
-          cardName={ card.cardName }
-          cardDescription={ card.cardDescription }
-          cardAttr1={ card.cardAttr1 }
-          cardAttr2={ card.cardAttr2 }
-          cardAttr3={ card.cardAttr3 }
-          cardImage={ card.cardImage }
-          cardRare={ card.cardRare }
-          cardTrunfo={ card.cardTrunfo }
-        />))}
+        { deck.map((card) => (
+          <>
+            <Card key={ card.cardName } { ...card } />
+            <button
+              className="remove"
+              data-testid="delete-button"
+              type="button"
+              onClick={ this.removeCard }
+            >
+              Excluir
+
+            </button>
+          </>
+        ))}
       </div>
     );
   }
