@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: '',
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      deck: [],
     };
   }
 
@@ -90,6 +91,24 @@ class App extends React.Component {
     this.validateIsEmpty()
     && this.validateSum()
     && this.maxAttributeValue())
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const newCard = this.state;
+    this.setState((prevState) => ({
+      deck: [...prevState.deck, newCard],
+    }));
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    });
+  }
 
   render() {
     const { cardName,
