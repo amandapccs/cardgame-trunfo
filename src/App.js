@@ -58,7 +58,7 @@ class App extends React.Component {
       && cardImage !== ''
       && cardRare !== '');
 
-    console.log(empty);
+    // console.log(empty);
 
     return empty;
   }
@@ -76,7 +76,7 @@ class App extends React.Component {
     const magicNumber = 210;
 
     const validation = (sum <= magicNumber);
-    console.log(validation);
+    // console.log(validation);
 
     return validation;
   }
@@ -95,7 +95,7 @@ class App extends React.Component {
     const attrb3 = (Number(cardAttr3) <= magicNumber && Number(cardAttr3) >= 0);
 
     const result = (attrb1 && attrb2 && attrb3);
-    console.log(result);
+    // console.log(result);
 
     return result;
   }
@@ -133,6 +133,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      deck,
       isSaveButtonDisabled } = this.state;
 
     return (
@@ -162,6 +163,18 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+
+        { deck.map((card) => (<Card
+          key={ card.cardName }
+          cardName={ card.cardName }
+          cardDescription={ card.cardDescription }
+          cardAttr1={ card.cardAttr1 }
+          cardAttr2={ card.cardAttr2 }
+          cardAttr3={ card.cardAttr3 }
+          cardImage={ card.cardImage }
+          cardRare={ card.cardRare }
+          cardTrunfo={ card.cardTrunfo }
+        />))}
       </div>
     );
   }
