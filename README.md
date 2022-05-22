@@ -50,7 +50,3 @@ Após passar por essas validações e preencher todos os campos, o botão "Salva
 ![iLxTgZ2](https://user-images.githubusercontent.com/97243572/169710974-2ab3ab5c-b5b1-4efc-8e15-b8892efc638c.png)
 - Tela principal da aplicação, com preview da carta que está em preenchimento.
 
-
-## Pessoa responsável pelo desenvolvimento:
-1. [amandapccs](https://github.com/amandapccs)
-
