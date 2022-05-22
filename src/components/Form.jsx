@@ -19,8 +19,6 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props;
 
-    // console.log(hasTrunfo);
-
     return (
       <form>
         Nome:
@@ -40,7 +38,7 @@ class Form extends React.Component {
           onChange={ onInputChange }
         />
 
-        Attributo 1:
+        Atributo 1:
         <input
           type="number"
           data-testid="attr1-input"
@@ -49,7 +47,7 @@ class Form extends React.Component {
           onChange={ onInputChange }
         />
 
-        Attributo 2:
+        Atributo 2:
         <input
           type="number"
           data-testid="attr2-input"
@@ -58,7 +56,7 @@ class Form extends React.Component {
           onChange={ onInputChange }
         />
 
-        Attributo 3:
+        Atributo 3:
         <input
           type="number"
           name="cardAttr3"
@@ -91,13 +89,17 @@ class Form extends React.Component {
         { hasTrunfo
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : (
-            <input
-              type="checkbox"
-              data-testid="trunfo-input"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
+            <label htmlFor="super-trunfo">
+              Carta é Super Trunfo?
+                <input
+                  type="checkbox"
+                  id="super-trunfo"
+                  data-testid="trunfo-input"
+                  name="cardTrunfo"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                />
+            </label>
           )}
 
         <button

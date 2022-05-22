@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import styles from './App.module.css';
 
 class App extends React.Component {
   constructor() {
@@ -37,19 +38,8 @@ class App extends React.Component {
         this.setState({ isSaveButtonDisabled: true });
       }
     });
-
-    // this.hasTrunfoValidation({ target });
   }
 
-  // hasTrunfoValidation = ({ target }) => {
-  //   const condition = (target.checked === true
-  //     ? this.setState({ hasTrunfo: true })
-  //     : this.setState({ hasTrunfo: false }));
-
-  //   if (target.type === 'checkbox') {
-  //     return condition;
-  //   }
-  // }
 
   validateIsEmpty = () => {
     const { cardName,
@@ -62,8 +52,6 @@ class App extends React.Component {
       && cardDescription !== ''
       && cardImage !== ''
       && cardRare !== '');
-
-    // console.log(empty);
 
     return empty;
   }
@@ -81,8 +69,6 @@ class App extends React.Component {
     const magicNumber = 210;
 
     const validation = (sum <= magicNumber);
-    // console.log(validation);
-
     return validation;
   }
 
@@ -100,7 +86,6 @@ class App extends React.Component {
     const attrb3 = (Number(cardAttr3) <= magicNumber && Number(cardAttr3) >= 0);
 
     const result = (attrb1 && attrb2 && attrb3);
-    // console.log(result);
 
     return result;
   }
@@ -150,38 +135,45 @@ class App extends React.Component {
       isSaveButtonDisabled } = this.state;
 
     return (
-      <div>
-        <h1>Tryunfo!</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+      <div className={ styles.divMainContainer }>
+        <main className={ styles.mainContainer }>
+          <section className={ styles.formSection }>
+            <h1>Monte seu baralho</h1>
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </section>
+          <section>
+            <h2>Preview</h2>
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </section>
+        </main>
 
         { deck.map((card) => (
-          <>
+          <section className={ styles.deck }>
             <Card key={ card.cardName } { ...card } />
             <button
-              className="remove"
+              className={ styles.button }
               data-testid="delete-button"
               type="button"
               onClick={ this.removeCard }
@@ -189,7 +181,7 @@ class App extends React.Component {
               Excluir
 
             </button>
-          </>
+          </section>
         ))}
       </div>
     );

@@ -1,0 +1,48 @@
+.divMainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  width: 60%;
+  margin: auto;
+  margin-top: 100px;
+  background-color: #D1CFE2;
+  border: 2px solid #9CADCE;
+}
+
+body {
+  background-color: #D4AFB9;
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.formSection {
+  margin-right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  background-color: #d4afb95e;
+}
+
+.formSection input, textarea {
+  padding: 10px;
+  border: rgb(190, 190, 190) solid 2px;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+
+button {
+  background-color:#D4AFB9;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+  padding: 10px;
+}
