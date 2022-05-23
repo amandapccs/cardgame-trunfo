@@ -21,8 +21,6 @@ Neste projeto foi desenvolvido um formulário para criar e adicionar cartas a um
 
 [Detalhes e uso da aplicação](#detalhes-e-uso-da-aplicação)
 
-[Pessoa responsável pelo desenvolvimento](#pessoa-responsável-pelo-desenvolvimento)
-
 ## Tecnologias
 
 - Projeto desenvolvido na linguagem Javascript;
